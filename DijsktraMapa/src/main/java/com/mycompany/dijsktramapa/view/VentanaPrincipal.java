@@ -31,7 +31,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonCalcularRuta = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -49,11 +49,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 27)); // NOI18N
         jLabel3.setText("Seleccione el origen y destino");
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 33)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Calcular Ruta");
-        jButton1.setBorderPainted(false);
+        botonCalcularRuta.setBackground(new java.awt.Color(0, 153, 0));
+        botonCalcularRuta.setFont(new java.awt.Font("Liberation Sans", 1, 33)); // NOI18N
+        botonCalcularRuta.setForeground(new java.awt.Color(0, 0, 0));
+        botonCalcularRuta.setText("Calcular Ruta");
+        botonCalcularRuta.setBorderPainted(false);
+        botonCalcularRuta.setName("botonCalcularRuta"); // NOI18N
+        botonCalcularRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCalcularRutaActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Dirección", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Auditorio principal", "Caseta de vigilancia del estacionamiento", "Caseta de vigilancia de la puerta principal", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
 
@@ -76,7 +82,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGap(131, 131, 131))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton1)
+                            .addComponent(botonCalcularRuta)
                             .addGap(178, 178, 178))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,13 +118,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(171, 171, 171)
-                        .addComponent(jButton1))
+                        .addComponent(botonCalcularRuta))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCalcularRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularRutaActionPerformed
+        // TODO add your handling code here:
+        com.mycompany.dijsktramapa.Main main = new com.mycompany.dijsktramapa.Main();
+        main.dijkstraTest();
+    }//GEN-LAST:event_botonCalcularRutaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +158,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonCalcularRuta;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

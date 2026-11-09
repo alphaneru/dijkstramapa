@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Main {
 
-    public void dijkstraTest() {
+    public List<Lugar> dijkstraTest() {
         
         Grafo g = new Grafo();
         Lugar l1 = new Lugar("nodo1", 60, 240);
@@ -43,8 +43,8 @@ public class Main {
         listaTest.add(l4);
         listaTest.add(l5);
         
-        g.dijkstra(l3, l5);
-        //return listaTest;
+        //g.dijkstra(l3, l5);
+        return listaTest;
         
     }
 }

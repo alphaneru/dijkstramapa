@@ -4,6 +4,16 @@
  */
 package com.mycompany.dijsktramapa.view;
 
+import com.mycompany.dijsktramapa.service.Grafo;
+import com.mycompany.dijsktramapa.service.Lugar;
+import com.mycompany.dijsktramapa.service.MapPanel;
+import java.awt.BorderLayout;
+import java.awt.image.BufferedImage;
+import java.util.*;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+
 /**
  *
  * @author alexis
@@ -11,12 +21,54 @@ package com.mycompany.dijsktramapa.view;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
-
+    private Grafo grafo = new Grafo();
+    private MapPanel mp;
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        
+        try {
+            java.net.URL url = getClass().getResource("/Mapa.jpeg");
+            System.out.println("Ruta buscada: " + url);   // si imprime "null", la ruta está mal
+            BufferedImage mapa = ImageIO.read(getClass().getResource("/Mapa.jpeg"));
+            mp = new MapPanel(mapa, grafo.nodos);
+            
+        }
+        catch(Exception e) {
+            System.out.println("error al mostrar el mapa " + e.getMessage());
+        }
+        
+        panelCentral.setLayout(new BorderLayout());
+        panelCentral.add(new JScrollPane(mp), BorderLayout.CENTER);
+        
+        pack();
+        setLocationRelativeTo(null);
+        
+        
+    }
+    // aqui se hardcodea el grafo
+    private void crearGrafo() {
+        
+        Grafo g = new Grafo();
+        Lugar l1 = new Lugar("nodo1", 60, 240);
+        Lugar l2 = new Lugar("nodo2", 210, 300);
+        Lugar l3 = new Lugar("nodo3", 300, 430);
+        Lugar l4 = new Lugar("nodo4", 380, 250);
+        Lugar l5 = new Lugar("nodo5", 480, 380);
+        
+        g.addNode(l1);
+        g.addNode(l2);
+        g.addNode(l3);
+        g.addNode(l4);
+        g.addNode(l5);
+        
+       l1.addArista(l5, 509);
+       l2.addArista(l1, 509);
+       l3.addArista(l4, 509);
+       l4.addArista(l5, 509);
+       l5.addArista(l3, 509);
     }
 
     /**
@@ -28,7 +80,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         botonCalcularRuta = new javax.swing.JButton();
@@ -36,12 +87,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        panelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
         setName("Ventana"); // NOI18N
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mapa.jpeg"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         jLabel2.setText("Sistema de Rutas Inteligentes dentro del ITSUR");
@@ -69,58 +119,63 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel5.setText("Destino");
 
+        javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);
+        panelCentral.setLayout(panelCentralLayout);
+        panelCentralLayout.setHorizontalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        panelCentralLayout.setVerticalGroup(
+            panelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 589, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(131, 131, 131))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(botonCalcularRuta)
-                            .addGap(178, 178, 178))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap()))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonCalcularRuta)
+                        .addGap(189, 189, 189))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(470, 470, 470))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel4)))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(470, 470, 470))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(95, 95, 95))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addGap(4, 4, 4)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(171, 171, 171)
-                        .addComponent(botonCalcularRuta))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(22, 22, 22)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonCalcularRuta)
+                .addGap(18, 18, 18)
+                .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,7 +184,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonCalcularRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularRutaActionPerformed
         // TODO add your handling code here:
         com.mycompany.dijsktramapa.Main main = new com.mycompany.dijsktramapa.Main();
-        main.dijkstraTest();
+        List<Lugar> caminio = main.dijkstraTest();
+        mp.setRuta(caminio);
     }//GEN-LAST:event_botonCalcularRutaActionPerformed
 
     /**
@@ -161,10 +217,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonCalcularRuta;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel panelCentral;
     // End of variables declaration//GEN-END:variables
 }

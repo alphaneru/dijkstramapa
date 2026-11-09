@@ -24,14 +24,17 @@ public class MapPanel extends JPanel {
     /**
      * Creates new form MapPanel
      */
+    private double ESCALA = 0.7;
    
     public MapPanel(BufferedImage mp, List<Lugar> nodosLugares) {
         this.mp = mp;
         //this.aristas = arista;
         this.nodosLugares = nodosLugares;
-        setPreferredSize(new Dimension(mp.getWidth(), mp.getHeight()));
+        setPreferredSize(new Dimension((int)(mp.getWidth() * ESCALA), (int) (mp.getHeight() *ESCALA)));
         initComponents();
     }
+    private int ex(double x) {return (int) Math.round(x * ESCALA);}
+    private int ey(double y) {return (int) Math.round(y * ESCALA);}
     
     public void setRuta(List<Lugar> ruta) {
         this.ruta = ruta;
@@ -44,13 +47,13 @@ public class MapPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.drawImage(mp, 0, 0, null);
+        g2.drawImage(mp, 0, 0, ex(mp.getWidth()), ey(mp.getHeight()), null);
         
         g2.setColor(Color.DARK_GRAY);
         g2.setStroke(new BasicStroke(2f));
         for(Lugar nodo : nodosLugares) {
             for(Arista arista : nodo.aristas) {
-                g2.drawLine(nodo.x, nodo.y, arista.destino.x, arista.destino.y);
+                g2.drawLine(ex(nodo.x), ey(nodo.y), ex(arista.destino.x), ey(arista.destino.y));
             }
         }
         
@@ -60,11 +63,11 @@ public class MapPanel extends JPanel {
             for(int i = 0; i < ruta.size() - 1; i++) {
                 Lugar a = ruta.get(i);
                 Lugar b = ruta.get(i + 1);
-                g2.drawLine(a.x, a.y, b.x, b.y);
+                g2.drawLine(ex(a.x), ey(a.y), ex(b.x), ey(b.y));
             }
         }
         
-        int r = 9;
+        int r = Math.max(6, (int) Math.round(9 * ESCALA));
         for(Lugar nodo : nodosLugares) {
             Color relleno = Color.BLUE;
             if(ruta != null && ruta.contains(nodo)) {
@@ -72,14 +75,14 @@ public class MapPanel extends JPanel {
                 
             }
             g2.setColor(relleno);
-            g2.fillOval(nodo.x - r, nodo.y - r, 2 * r, 2 * r);
+            g2.fillOval(ex(nodo.x) - r, ey(nodo.y) - r, 2 * r, 2 * r);
             
             g2.setColor(Color.WHITE);
             g2.setStroke(new BasicStroke(1.5f));
-            g2.drawOval(nodo.x - r, nodo.y - r, 2 * r, 2 * r);
+            g2.drawOval(ex(nodo.x) - r, ey(nodo.y) - r, 2 * r, 2 * r);
             
             g2.setColor(Color.BLACK);
-            g2.drawString(nodo.nombre, nodo.x + r + 2, nodo.y - r);
+            g2.drawString(nodo.nombre, ex(nodo.x) + r + 2, ey(nodo.y) - r);
         }
     }
 

@@ -11,7 +11,7 @@ import java.util.*;
  * @author alexis
  */
 public class Grafo {
-    List<Lugar> nodos = new ArrayList<>();
+    public List<Lugar> nodos = new ArrayList<>();
     public void addNode(Lugar nodo) {
         nodos.add(nodo);
         
@@ -63,7 +63,10 @@ public class Grafo {
             
         }
         System.out.println("Mas corto");
+        List<Lugar> ruta = new ArrayList<>();
+        
         while(!camino.isEmpty()) {
+            ruta.add(camino.pop());
             System.out.println(camino.pop());
             if(!camino.isEmpty()) {
                 System.out.println("->");

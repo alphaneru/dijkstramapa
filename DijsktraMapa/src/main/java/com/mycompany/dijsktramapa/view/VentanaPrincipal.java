@@ -39,7 +39,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         catch(Exception e) {
             System.out.println("error al mostrar el mapa " + e.getMessage());
         }
-        
+
         panelCentral.setLayout(new BorderLayout());
         panelCentral.add(new JScrollPane(mp), BorderLayout.CENTER);
         

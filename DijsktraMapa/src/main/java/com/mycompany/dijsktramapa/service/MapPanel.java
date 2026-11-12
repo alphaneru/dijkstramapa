@@ -24,7 +24,7 @@ public class MapPanel extends JPanel {
     /**
      * Creates new form MapPanel
      */
-    private double ESCALA = 0.7;
+    private double ESCALA = 0.8;
    
     public MapPanel(BufferedImage mp, List<Lugar> nodosLugares) {
         this.mp = mp;
@@ -49,7 +49,7 @@ public class MapPanel extends JPanel {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.drawImage(mp, 0, 0, ex(mp.getWidth()), ey(mp.getHeight()), null);
         
-        g2.setColor(Color.DARK_GRAY);
+        g2.setColor(Color.WHITE);
         g2.setStroke(new BasicStroke(2f));
         for(Lugar nodo : nodosLugares) {
             for(Arista arista : nodo.aristas) {
@@ -67,7 +67,7 @@ public class MapPanel extends JPanel {
             }
         }
         
-        int r = Math.max(6, (int) Math.round(9 * ESCALA));
+        int r = Math.max(6, (int) Math.round(11 * ESCALA));
         for(Lugar nodo : nodosLugares) {
             Color relleno = Color.BLUE;
             if(ruta != null && ruta.contains(nodo)) {

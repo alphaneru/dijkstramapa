@@ -12,18 +12,45 @@ import java.util.*;
  */
 public class Grafo {
     public List<Lugar> nodos = new ArrayList<>();
+    
+    
     public void addNode(Lugar nodo) {
         nodos.add(nodo);
         
     }
-    public void dijkstra(Lugar inicio, Lugar fin) {
+    
+    public void addAristaNoDirigida(Lugar a, Lugar b, double peso) {
+        a.addArista(b, peso);
+        b.addArista(a, peso);
+    }
+    
+    //para sacar el nodo dado el nombre del combobox
+    public Lugar buscarNodo(String nombre) {
+        System.out.println("se ejecuto buscarnodo");
+        
+        for(Lugar nodo : nodos) {
+           // System.out.println("hola hola " + nombre + " " + nodo.nombre);
+            if(nodo.nombre.equals(nombre)) {
+                return nodo;
+            }
+        }
+        return null;
+    }
+    
+    // es de tipo de dato Map.Entry pa que devuelva la lista de la ruta y la distancua
+    public Map.Entry<List<Lugar>, Double> dijkstra(String inicioNombre, String finNombre) {
+        
+        Lugar inicio = buscarNodo(inicioNombre);
+        Lugar fin = buscarNodo(finNombre);
+        
+        
         //inicializar
         for(Lugar nodo : nodos) {
             nodo.distancia = Integer.MAX_VALUE;
             nodo.previo = null;
         }
         inicio.distancia = 0;
-        
+       
         PriorityQueue<Lugar> pq = new PriorityQueue<>(Comparator.comparingDouble(n -> n.distancia));
         pq.add(inicio);
         
@@ -50,7 +77,7 @@ public class Grafo {
         }
         if(fin.distancia == Double.MAX_VALUE) {
             System.out.println("No hay camino");
-            return;
+            return null;
         }
         
         // REconstruccion del camino
@@ -67,12 +94,19 @@ public class Grafo {
         
         while(!camino.isEmpty()) {
             ruta.add(camino.pop());
-            System.out.println(camino.pop());
-            if(!camino.isEmpty()) {
-                System.out.println("->");
-            }
+            
+            //if(!camino.isEmpty()) {
+              //  System.out.println("->");
+            //}
         }
-        System.out.println("\ndistancia total " + fin.distancia);
+        
+        Map.Entry<List<Lugar>, Double> p = Map.entry(ruta, fin.distancia);
+        
+        return p;
+        
+        
+       // System.out.println("\ndistancia total " + fin.distancia);
+       
         
     }
     

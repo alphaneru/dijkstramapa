@@ -192,8 +192,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         desplegableB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Dirección", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Auditorio principal", "Caseta de vigilancia del estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
         desplegableB.setPreferredSize(new java.awt.Dimension(482, 50));
 
+        jLabel4.setBackground(new java.awt.Color(24, 96, 82));
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 25)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(201, 92, 25));
         jLabel4.setText("Punto de partida");
 
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 25)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(201, 92, 25));
         jLabel5.setText("Destino");
 
         javax.swing.GroupLayout panelCentralLayout = new javax.swing.GroupLayout(panelCentral);

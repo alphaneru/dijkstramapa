@@ -68,7 +68,14 @@ public class MapPanel extends JPanel {
         }
         
         int r = Math.max(6, (int) Math.round(11 * ESCALA));
+        int tamLetra = Math.max(11, (int) Math.round(14 * ESCALA));   // escala con el mapa
+        g2.setFont(new Font("SansSerif", Font.BOLD, tamLetra));
+        
         for(Lugar nodo : nodosLugares) {
+            
+            FontMetrics fm = g2.getFontMetrics();
+        int anchoTexto = fm.stringWidth(nodo.nombre);
+            
             Color relleno = Color.BLUE;
             if(ruta != null && ruta.contains(nodo)) {
                 relleno = new Color(0, 153, 1 );
@@ -81,8 +88,13 @@ public class MapPanel extends JPanel {
             g2.setStroke(new BasicStroke(1.5f));
             g2.drawOval(ex(nodo.x) - r, ey(nodo.y) - r, 2 * r, 2 * r);
             
-            g2.setColor(Color.BLACK);
+            g2.setColor(new Color(255, 255, 255, 190));
+        
+
+        // el texto en el color que quieras
+        g2.setColor(new Color(139, 0, 0));
             g2.drawString(nodo.nombre, ex(nodo.x) + r + 2, ey(nodo.y) - r);
+            
         }
     }
 

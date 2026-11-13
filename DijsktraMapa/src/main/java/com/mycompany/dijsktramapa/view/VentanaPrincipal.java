@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.util.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.Color;
 
 
 /**
@@ -33,6 +34,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         distanciaTxt.setText("");
         grafo = crearGrafo();
+        
+        JPanel panel = new JPanel();
+        
+        Color cFondo = new Color(8,83,62);
+        // Asignar el color de fondo
+        this.getContentPane().setBackground(cFondo);
+        
         try {
             java.net.URL url = getClass().getResource("/Mapa.jpeg");
             System.out.println("Ruta buscada: " + url);   // si imprime "null", la ruta está mal
@@ -156,14 +164,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setName("Ventana"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(201, 92, 25));
         jLabel2.setText("Sistema de Rutas Inteligentes dentro del ITSUR");
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 27)); // NOI18N
         jLabel3.setText("Seleccione el origen y destino");
 
-        botonCalcularRuta.setBackground(new java.awt.Color(0, 153, 0));
+        botonCalcularRuta.setBackground(new java.awt.Color(255, 204, 153));
         botonCalcularRuta.setFont(new java.awt.Font("Liberation Sans", 1, 33)); // NOI18N
-        botonCalcularRuta.setForeground(new java.awt.Color(0, 0, 0));
+        botonCalcularRuta.setForeground(new java.awt.Color(58, 51, 25));
         botonCalcularRuta.setText("Calcular Ruta");
         botonCalcularRuta.setBorderPainted(false);
         botonCalcularRuta.setName("botonCalcularRuta"); // NOI18N
@@ -173,9 +182,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        desplegableA.setBackground(new java.awt.Color(201, 92, 25));
+        desplegableA.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         desplegableA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Dirección", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Auditorio principal", "Caseta de vigilancia del estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
+        desplegableA.setPreferredSize(new java.awt.Dimension(482, 50));
 
+        desplegableB.setBackground(new java.awt.Color(201, 92, 25));
+        desplegableB.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         desplegableB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Dirección", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Auditorio principal", "Caseta de vigilancia del estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
+        desplegableB.setPreferredSize(new java.awt.Dimension(482, 50));
 
         jLabel4.setText("Punto de partida");
 

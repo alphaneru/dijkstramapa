@@ -52,7 +52,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.out.println("error al mostrar el mapa " + e.getMessage());
         }
         
-        jLabel6.setText("<html><center>Hecho por Alexis Ortiz Lopez y <br>Miguel Angel Cornejo Mendoza<br>Estructuras de Datos</center></html>");
         panelCentral.setLayout(new BorderLayout());
         panelCentral.add(new JScrollPane(mp), BorderLayout.CENTER);
         
@@ -102,7 +101,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Lugar canchaFutbol = new Lugar("Cancha de Futbol", 879, 631);
         Lugar edificioE = new Lugar("Edificio E", 376, 616);
         Lugar edificioTics = new Lugar("Edificio de TICS", 581, 644);
-        Lugar auditorioAbandonado = new Lugar("Auditorio Abandonado", 190, 640);
+        Lugar auditorioAbandonado = new Lugar("Auditorio Principal", 190, 640);
         Lugar canchaBasquet =  new Lugar("Canchas de basketball", 249, 703);
         Lugar cafeteria =  new Lugar("Cafetería", 444, 717);
         
@@ -181,19 +180,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelCentral = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         distanciaTxt = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
         setName("Ventana"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 153));
+        jLabel2.setForeground(new java.awt.Color(180, 180, 180));
         jLabel2.setText("Sistema de Rutas Inteligentes dentro del ITSUR");
 
         jLabel3.setBackground(new java.awt.Color(255, 153, 0));
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 0, 153));
+        jLabel3.setForeground(new java.awt.Color(180, 180, 180));
         jLabel3.setText("Seleccione el origen y destino");
 
         botonCalcularRuta.setBackground(new java.awt.Color(18, 83, 79));
@@ -210,12 +208,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         desplegableA.setBackground(new java.awt.Color(42, 131, 95));
         desplegableA.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        desplegableA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Caseta del Estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
+        desplegableA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Caseta del Estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía", "Auditorio Principal" }));
         desplegableA.setPreferredSize(new java.awt.Dimension(482, 50));
 
         desplegableB.setBackground(new java.awt.Color(42, 131, 95));
         desplegableB.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        desplegableB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Caseta del Estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía" }));
+        desplegableB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biblioteca", "Cafetería", "Edificio A", "Edificio B", "Edificio E", "Edificio de Vinculación", "Palapas", "Edificio de TICS", "Cancha de Futbol", "Canchas de basketball", "Estacionamiento", "Auditorio de vinculación", "Caseta del Estacionamiento", "Entrada", "Cocinas de Gastronomía", "Cabaña de Gastronomía", "Auditorio Principal" }));
         desplegableB.setPreferredSize(new java.awt.Dimension(482, 50));
 
         jLabel4.setBackground(new java.awt.Color(24, 96, 82));
@@ -243,10 +241,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         distanciaTxt.setText("jLabel6");
         distanciaTxt.setAlignmentY(0.0F);
 
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 23)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Hecho por Alexis Ortiz Lopez y\n Miguel Angel Cornejo Mendoza ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,7 +254,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(botonCalcularRuta)
-                                .addGap(94, 94, 94))
+                                .addGap(112, 112, 112))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
                                 .addComponent(desplegableB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,9 +273,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(104, 104, 104))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(592, 592, 592)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(1039, 1039, 1039))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,18 +292,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(desplegableB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonCalcularRuta)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addComponent(botonCalcularRuta))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(panelCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 450, Short.MAX_VALUE)
                 .addComponent(distanciaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(362, 362, 362))
+                .addGap(203, 203, 203))
         );
 
         desplegableA.getAccessibleContext().setAccessibleName("");
@@ -377,7 +367,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel panelCentral;
     // End of variables declaration//GEN-END:variables
 }

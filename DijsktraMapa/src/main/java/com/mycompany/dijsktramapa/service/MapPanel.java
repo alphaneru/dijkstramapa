@@ -20,11 +20,21 @@ public class MapPanel extends JPanel {
     private final List<Lugar> nodosLugares;
     //private final List<Arista> aristas; no se ocupaba porque es una lista de adyacencia XDXDXDDD
     private List<Lugar> ruta;
+    private Lugar ini, fini;
     
     /**
      * Creates new form MapPanel
      */
-    private double ESCALA = 0.8;
+    
+    public void setInicio(Lugar ini)  { 
+        this.ini = ini;  
+        repaint(); 
+    }
+    public void setFin(Lugar fini) { 
+        this.fini = fini; 
+        repaint(); 
+    }
+    private double ESCALA = 0.85;
    
     public MapPanel(BufferedImage mp, List<Lugar> nodosLugares) {
         this.mp = mp;
@@ -68,19 +78,24 @@ public class MapPanel extends JPanel {
         }
         
         int r = Math.max(6, (int) Math.round(11 * ESCALA));
-        int tamLetra = Math.max(11, (int) Math.round(14 * ESCALA));   // escala con el mapa
-        g2.setFont(new Font("SansSerif", Font.BOLD, tamLetra));
+        //int tamLetra = Math.max(11, (int) Math.round(14 * ESCALA));   // escala con el mapa
+        //g2.setFont(new Font("SansSerif", Font.BOLD, tamLetra));
         
         for(Lugar nodo : nodosLugares) {
             
-            FontMetrics fm = g2.getFontMetrics();
-        int anchoTexto = fm.stringWidth(nodo.nombre);
+           // FontMetrics fm = g2.getFontMetrics();
+            //int anchoTexto = fm.stringWidth(nodo.nombre);
             
             Color relleno = Color.BLUE;
             if(ruta != null && ruta.contains(nodo)) {
                 relleno = new Color(0, 153, 1 );
                 
             }
+            if(nodo == ini) 
+                relleno = new Color(245, 39, 214);   
+            if(nodo == fini) 
+                relleno = new Color(236, 255, 10);   
+            
             g2.setColor(relleno);
             g2.fillOval(ex(nodo.x) - r, ey(nodo.y) - r, 2 * r, 2 * r);
             
@@ -88,15 +103,19 @@ public class MapPanel extends JPanel {
             g2.setStroke(new BasicStroke(1.5f));
             g2.drawOval(ex(nodo.x) - r, ey(nodo.y) - r, 2 * r, 2 * r);
             
-            g2.setColor(new Color(255, 255, 255, 190));
+            //g2.setColor(new Color(255, 255, 255, 190));
         
 
-        // el texto en el color que quieras
-        g2.setColor(new Color(139, 0, 0));
-            g2.drawString(nodo.nombre, ex(nodo.x) + r + 2, ey(nodo.y) - r);
+            // el texto en el color que quieras
+            //g2.setColor(new Color(139, 0, 0));
+           // g2.drawString(nodo.nombre, ex(nodo.x) + r + 2, ey(nodo.y) - r);
             
         }
     }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
